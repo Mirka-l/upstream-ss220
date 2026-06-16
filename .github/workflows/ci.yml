@@ -74,8 +74,8 @@ jobs:
               - 'tools/translations/**'
 
       - name: Validate Translations
-        if: steps.linter-setup.conclusion == 'success' && !cancelled() && steps.ru-names-filter.outputs.run_ru_names == 'true'
-        run: bash tools/translations/validate_ru_names.sh
+        run: |
+          bash tools/translations/validate_ru_names.sh
 
 
   odlint:
