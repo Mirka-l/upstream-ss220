@@ -12,5 +12,5 @@
 		)
 
 /obj/item/storage/belt/chef/apron/red
-	name = "красный фартук"
+	name = "red apron"
 	icon_state = "apron_red"

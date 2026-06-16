@@ -64,6 +64,20 @@ jobs:
         shell: bash
         run: ~/dreamchecker 2>&1 | bash tools/ci/annotate_dm.sh
 
+      - name: Check For Translation Edits
+        id: ru-names-filter
+        uses: dorny/paths-filter@v4
+        with:
+          filters: |
+            run_ru_names:
+              - 'modular_ss220/translations/public/ru_names/**'
+              - 'tools/translations/**'
+
+      - name: Validate Translations
+        if: steps.linter-setup.conclusion == 'success' && !cancelled() && steps.ru-names-filter.outputs.run_ru_names == 'true'
+        run: bash tools/translations/validate_ru_names.sh
+
+
   odlint:
     name: Lint with OpenDream
     runs-on: ubuntu-22.04
