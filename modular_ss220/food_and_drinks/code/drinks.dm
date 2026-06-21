@@ -678,7 +678,7 @@
 	list_reagents = list("kvass" = 50)
 
 /obj/machinery/chem_dispenser/soda/Initialize(mapload)
-	dispensable_reagents += "kvass"
+	dispensable_reagents += list("kvass", "caramel")
 	return ..()
 
 /obj/item/handheld_chem_dispenser/soda/Initialize(mapload)
@@ -1081,7 +1081,7 @@
 	min_temp = T0C + 100
 
 /datum/reagent/consumable/drink/espresso_tonic
-	name = "Espresso toni"
+	name = "Espresso tonic"
 	id = "espresso_tonic"
 	description = "Эспрессо с лаймом и льдом."
 	color = "#a03c1e"
@@ -1107,7 +1107,7 @@
 	color = "#dd89d9"
 	drinking_glass_icon = 'modular_ss220/food_and_drinks/icons/drinks.dmi'
 	drink_icon = "grape_tonic"
-	drink_name = "Espresso tonic"
+	drink_name = "Grape tonic"
 	drink_desc = "Газировка, виноград и кофе"
 	harmless = FALSE
 	taste_description = "на вкус как бодрящая виноградная жвачка"
@@ -1200,8 +1200,6 @@
 	reagent_state = LIQUID
 	color = "#965c26"
 	taste_description = "карамель"
+	taste_flag = ORGANIC
+	process_flags = ORGANIC
 	taste_mult = 1.5
-
-/obj/machinery/chem_dispenser/soda/Initialize(mapload)
-	dispensable_reagents += list("caramel")
-	return ..()
