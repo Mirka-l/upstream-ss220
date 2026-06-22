@@ -282,8 +282,8 @@
 	var/max_capacity = 600
 	var/used_capacity = 0
 	var/remaining_capacity = 600
-	var/list/storedinfo = list()
-	var/list/timestamp = list()
+	var/alist/storedinfo = alist()
+	var/alist/timestamp = alist()
 	var/ruined = FALSE
 	new_attack_chain = TRUE
 
