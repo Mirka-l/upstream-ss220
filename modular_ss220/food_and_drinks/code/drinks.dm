@@ -1059,9 +1059,11 @@
 	result_amount = 5
 	mix_sound = 'sound/goonstation/misc/drinkfizz.ogg'
 
-/datum/chemical_reaction/bumble/cold_bumble
-	id = "cold_bumble"
-	required_reagents = list("hot_bumble" = 5, "ice" = 1)
+/datum/chemical_reaction/bumble/cooling_reaction_bumble_through_temp
+	id = "cold_bumble_through_temp"
+	required_reagents = list("hot_bumble" = 1)
+	result_amount = 1
+	max_temp = T20C
 
 /datum/reagent/consumable/drink/bumble/hot
 	name = "Hot bumble"
@@ -1150,11 +1152,18 @@
 	drink_desc = "Сливки и кофе"
 	taste_description = "самое то в такую жаркую обстановку"
 
-/datum/chemical_reaction/raf/cold_raf
+/datum/chemical_reaction/raf/cooling_reaction_raf_through_temp
 	name = "Cold raf"
 	id = "cold_raf"
 	result = "cold_raf"
-	required_reagents = list("raf" = 3, "ice" = 1)
+	required_reagents = list("raf" = 1)
+	max_temp = T0C + 14
+
+/datum/chemical_reaction/raf/heating_reaction_raf_through_temp
+	name = "Heat raf"
+	id = "heat_raf"
+	required_reagents = list("cold_raf" = 1)
+	min_temp = T0C + 15
 
 /datum/reagent/consumable/drink/lemonade_fusion
 	name = "Lemonade fusion"
@@ -1203,3 +1212,9 @@
 	taste_flag = ORGANIC
 	process_flags = ORGANIC
 	taste_mult = 1.5
+
+/datum/reagent/consumable/drink/ice
+	reagent_temperature = T0C - 15
+
+/datum/chemical_reaction/water
+	min_temp = T0C + 1
