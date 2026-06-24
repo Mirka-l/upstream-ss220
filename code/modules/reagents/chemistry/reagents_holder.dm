@@ -767,7 +767,7 @@
 	/* SS220 EDIT START - for dynamic temperature
 	else
 		warning("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
-	   SS220 EDIT END */
+	SS220 EDIT END */
 	handle_reactions()
 	return TRUE
 
