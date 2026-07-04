@@ -12,6 +12,7 @@
 #include "code/items/radio.dm"
 #include "code/items/storage/closets.dm"
 #include "code/items/storage/surgical_tray.dm"
+#include "code\items\rcd.dm"
 #include "code/items/weapons.dm"
 #include "code/jobs/warden.dm"
 #include "code/loot/megafauna.dm"
