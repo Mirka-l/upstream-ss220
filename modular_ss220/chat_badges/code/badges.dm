@@ -36,6 +36,7 @@ GLOBAL_LIST(badge_icons_cache)
 		"Спрайтер" = "Spriceter",
 		"Маленький Работяга" = "WikiLore",
 		"Старший Администратор" = "HeadAdmin",
+		"Зам Старшего Администратора" = "HeadAdmin",
 		"Администратор" = "GameAdmin",
 		"Триал Администратор" = "TrialAdmin",
 		"Ментор" = "Mentor"
@@ -45,12 +46,12 @@ GLOBAL_LIST(badge_icons_cache)
 /client/proc/get_badge_icon(badge)
 	if(isnull(badge))
 		return null
-		
+
 	var/icon/badge_icon = LAZYACCESS(GLOB.badge_icons_cache, badge)
 	if(isnull(badge_icon))
 		badge_icon = icon(CHAT_BADGES_DMI, badge)
 		LAZYSET(GLOB.badge_icons_cache, badge, badge_icon)
-		
+
 	return badge_icon
 
 #undef CHAT_BADGES_DMI
