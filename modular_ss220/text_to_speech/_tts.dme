@@ -13,6 +13,7 @@
 #include "code/tts_component.dm"
 #include "code/tts_preferences.dm"
 #include "code/tts_provider.dm"
+#include "code/tts_radio.dm"
 #include "code/tts_seed.dm"
 #include "code/tts_subsystem.dm"
 #include "code/tts_surgery.dm"
