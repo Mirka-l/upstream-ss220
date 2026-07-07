@@ -309,7 +309,7 @@ GLOBAL_LIST_EMPTY(channel_to_radio_key)
 	else //Turf, leave speech bubbles to the mob
 		speech_bubble("[bubble_icon][speech_bubble_test]", src, speech_bubble_recipients)
 
-	hear_message_obj(listening_obj, src, message_pieces, verb) // SS220 EDIT - добавляет проверку, что радио канал ещё не был услышан, для воспроизведения звука
+	hear_message_obj(listening_obj, src, message_pieces, verb) // SS220 EDIT - Проверяет, что полученное в радиоканал сообщение мы слышим впервые.
 
 	return TRUE
 
@@ -427,7 +427,7 @@ GLOBAL_LIST_EMPTY(channel_to_radio_key)
 		if(get_turf(M) in hearturfs)
 			listening |= M
 
-	hear_message_obj(view(message_range, whisper_loc), src, message_pieces, verb) // SS220 EDIT - добавляет проверку, что радио канал ещё не был услышан, для воспроизведения звука
+	hear_message_obj(view(message_range, whisper_loc), src, message_pieces, verb) // SS220 EDIT - Проверяет, что полученное в радиоканал сообщение мы слышим впервые.
 
 	var/list/eavesdropping = hearers(eavesdropping_range, whisper_loc)
 	eavesdropping -= src
