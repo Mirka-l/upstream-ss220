@@ -309,14 +309,7 @@ GLOBAL_LIST_EMPTY(channel_to_radio_key)
 	else //Turf, leave speech bubbles to the mob
 		speech_bubble("[bubble_icon][speech_bubble_test]", src, speech_bubble_recipients)
 
-	// SS220 EDIT START - Для корректного воспроизведения ТТС
-	hear_message_obj(listening_obj, src, message_pieces, verb)
-	/*
-	for(var/obj/O in listening_obj)
-		spawn(0) // KILL THIS
-			if(O) //It's possible that it could be deleted in the meantime.
-				O.hear_talk(src, message_pieces, verb)
-	SS220 EDIT END */
+	hear_message_obj(listening_obj, src, message_pieces, verb) // SS220 EDIT - добавляет проверку, что радио канал ещё не был услышан, для воспроизведения звука
 
 	return TRUE
 
@@ -434,14 +427,7 @@ GLOBAL_LIST_EMPTY(channel_to_radio_key)
 		if(get_turf(M) in hearturfs)
 			listening |= M
 
-	// SS220 EDIT START - Для корректного воспроизведения ТТС
-	hear_message_obj(view(message_range, whisper_loc), src, message_pieces, verb)
-	/*pass on the message to objects that can hear us.
-	for(var/obj/O in view(message_range, whisper_loc))
-		spawn(0)
-			if(O)
-				O.hear_talk(src, message_pieces, verb)
-	SS220 EDIT END */
+	hear_message_obj(view(message_range, whisper_loc), src, message_pieces, verb) // SS220 EDIT - добавляет проверку, что радио канал ещё не был услышан, для воспроизведения звука
 
 	var/list/eavesdropping = hearers(eavesdropping_range, whisper_loc)
 	eavesdropping -= src
