@@ -7,8 +7,9 @@
 /proc/hear_message_obj(list/listening_obj, mob/M, list/message_pieces, verbage)
 	var/list/transmited_channels = list()
 	for(var/obj/O in listening_obj)
-		if(!O)
-			continue
+		spawn(0)
+			if(!O)
+				continue
 
 		if(isradio(O))
 			var/obj/item/radio/radio = O
