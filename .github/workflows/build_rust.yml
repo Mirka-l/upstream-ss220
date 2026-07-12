@@ -9,7 +9,7 @@ jobs:
       github.event.issue.pull_request &&
       (github.event.comment.body == '!build_rust') &&
       (
-        github.event.comment.user.id == 25063394 ||
+        (github.event.comment.user.login == 'Mirka-l') ||
         github.event.comment.user.id == 116982774 ||
         github.event.comment.user.id == 108773801 ||
         github.event.comment.user.id == 144391971
