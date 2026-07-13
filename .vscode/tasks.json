@@ -2,13 +2,43 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"type": "shell",
+			"command": "tools/bootstrap/python",
+			"args": [
+				"tools/translations/merge_ru_names.py",
+				"tools/translations/ru_names_header.toml",
+				"modular_ss220/translations/public/ru_names",
+				"modular_ss220/translations/public/ru_names.toml"
+			],
+			"windows": {
+				"command": ".\\tools\\bootstrap\\python.bat"
+			},
+			"problemMatcher": [],
+			"label": "ru_names: merge fragments"
+		},
+		{
+			"type": "dreammaker",
+			"dme": "${command:CurrentDME}",
+			"problemMatcher": [
+				"$dreammaker"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "dm: build - ${command:CurrentDME}"
+		},
+		{
 			"type": "dreammaker",
 			"dme": "paradise.dme",
 			"problemMatcher": [
 				"$dreammaker"
 			],
 			"group": "build",
-			"label": "dm: build - paradise.dme"
+			"dependsOn": [
+				"ru_names: merge fragments"
+			],
+			"label": "dm: build + TOML ru_names"
 		},
 		{
 			"type": "shell",

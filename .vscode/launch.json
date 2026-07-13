@@ -19,6 +19,21 @@
 	{
 		"type": "byond",
 		"request": "launch",
+		"name": "Build & DS Debug (+ TOML ru_names)",
+		"preLaunchTask": "dm: build + TOML ru_names",
+		"dmb": "${workspaceFolder}/${command:CurrentDMB}"
+	},
+	{
+		"type": "byond",
+		"request": "launch",
+		"name": "Build & DD Debug (+ TOML ru_names)",
+		"preLaunchTask": "dm: build + TOML ru_names",
+		"dmb": "${workspaceFolder}/${command:CurrentDMB}",
+		"dreamDaemon": true
+	},
+	{
+		"type": "byond",
+		"request": "launch",
 		"name": "DS Debug",
 		"dmb": "${workspaceFolder}/${command:CurrentDMB}"
 	},
