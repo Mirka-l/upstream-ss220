@@ -21,7 +21,6 @@
 			"command": "tools/bootstrap/python",
 			"args": [
 				"tools/translations/split_ru_names.py",
-				"--clean"
 			],
 			"windows": {
 				"command": ".\\tools\\bootstrap\\python.bat"

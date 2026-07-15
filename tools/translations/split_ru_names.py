@@ -21,7 +21,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterator
 
-from ru_names_common import build_fragment_body, parse_toml_basic_string_rhs
+from translations.ru_names_common import build_fragment_body, parse_toml_basic_string_rhs
 
 TABLE_HEADER_PATTERN = re.compile(r"^[ \t]*\[([^\]]+)\]\s*(?:#.*)?\s*$")
 
@@ -169,6 +169,8 @@ def plan_outputs(tables: list[ParsedTable]) -> tuple[list[PlannedFile], dict[str
 
 
 def write_files(output_root: Path, planned: list[PlannedFile], *, clean: bool) -> None:
+    """Write files, skipping if content hasn't changed."""
+
     if clean and output_root.exists():
         for child in output_root.iterdir():
             if child.is_dir():
@@ -180,6 +182,16 @@ def write_files(output_root: Path, planned: list[PlannedFile], *, clean: bool) -
 
     for item in planned:
         out_file = output_root / item.rel_path
+
+        # Проверка: если файл существует и содержимое совпадает - пропускаем
+        if out_file.exists():
+            try:
+                existing_content = out_file.read_text(encoding="utf-8")
+                if existing_content == item.body:
+                    continue
+            except (OSError, UnicodeDecodeError):
+                pass
+
         out_file.write_text(item.body, encoding="utf-8", newline="\n")
 
 
