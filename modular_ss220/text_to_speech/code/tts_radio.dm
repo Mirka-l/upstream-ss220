@@ -5,11 +5,10 @@
 	return ..()
 
 /proc/hear_message_obj(list/listening_obj, mob/M, list/message_pieces, verbage)
-	var/list/transmited_channels = list()
+	var/list/transmitted_channels = list()
 	for(var/obj/O in listening_obj)
-		spawn(0)
-			if(!O)
-				continue
+		if(!O)
+			continue
 
 		if(isradio(O))
 			var/obj/item/radio/radio = O
@@ -17,9 +16,9 @@
 				continue
 			if(get_dist(radio, M) > radio.canhear_range)
 				continue
-			if(radio.frequency in transmited_channels)
+			if(radio.frequency in transmitted_channels)
 				continue
-			if(radio.talk_into(M, message_pieces, null, verbage))
-				transmited_channels += radio.frequency
+			transmitted_channels += radio.frequency
+			INVOKE_ASYNC(O, TYPE_PROC_REF(/obj/item/radio, talk_into), M, message_pieces, null, verbage)
 		else
-			O.hear_talk(M, message_pieces, verbage)
+			INVOKE_ASYNC(O, TYPE_PROC_REF(/obj, hear_talk), M, message_pieces, verbage)
