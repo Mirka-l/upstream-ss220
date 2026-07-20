@@ -21,7 +21,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterator
 
-from translations.ru_names_common import build_fragment_body, parse_toml_basic_string_rhs
+from ru_names_common import build_fragment_body, parse_toml_basic_string_rhs
 
 TABLE_HEADER_PATTERN = re.compile(r"^[ \t]*\[([^\]]+)\]\s*(?:#.*)?\s*$")
 
